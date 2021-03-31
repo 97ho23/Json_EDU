@@ -1,0 +1,27 @@
+{
+	"company" : "Megatus",
+	"address" : "Guro-gu",
+	"number" : "025630117",
+	"employee" : [
+		{
+			"name" : "JuHo",
+			"age" : 27,
+			"isNew" : true
+		},
+		{
+			"name" : "HyunSik",
+			"age" : 29,
+			"isNew" : false
+		},
+		{
+			"name" : "JiYoung",
+			"age" : 24,
+			"isNew" : true
+		},
+		{
+			"name" : "HyeSung",
+			"age" : 24,
+			"isNew" : true
+		}
+	]	
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bookInfo>
+	<item>
+		<title>JSP And Servlet</title>
+		<author>Mincheol Shin</author>
+		<publisher>InfoBook</publisher>
+		<price>25000</price>
+	</item>
+	<item>
+		<title>사랑과 전쟁</title>
+		<author>이사랑</author>
+		<publisher>전쟁문화사</publisher>
+		<price>15000</price>
+	</item>
+</bookInfo>

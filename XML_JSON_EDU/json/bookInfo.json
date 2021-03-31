@@ -1,0 +1,16 @@
+{
+	"item": [
+		{
+			"title": "JSP And Servlet",
+			"author": "Mincheol Shin",
+			"price": 25000,
+			"publisher": "InfoBook"
+		},
+		{
+			"title": "사랑과 전쟁2222",
+			"author": "이사랑",
+			"publisher": "전쟁문화사",
+			"price": 15000
+		}
+	]
+}

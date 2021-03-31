@@ -1,0 +1,698 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<m:diagram xmlns:m="http://megaengine.megatus.com/diagram"
+	cached="No" isTransacted="No" lockKey="" monitoring="Yes"
+	multithreadLimit="unlimited" name="E1000_SEND"
+	path="com.megatus.megaengine.console.mediate.view.MediateDiagram"
+	serviceHost="${protocol}://${address}" servicePort="${port}"
+	sid="4AD32574-B1F8-4B0B-B223-CF389F636944">
+	<m:model path="com.megatus.megaengine.tool.model.Diagram">
+		<m:styles>
+			<m:style name="left" value="0" />
+			<m:style name="top" value="0" />
+			<m:style name="width" value="1697" />
+			<m:style name="height" value="846" />
+		</m:styles>
+	</m:model>
+	<m:node inputVariable="list" is2PhaseCommit="No"
+		name="File Read" outputVariable="MwAttachFile"
+		path="com.megatus.megaengine.console.mediate.view.task.Invoke"
+		sid="A611E9DB-6CAD-41AC-99F0-481F78CEEB05">
+		<m:model path="com.megatus.megaengine.tool.model.Node">
+			<m:styles>
+				<m:style name="left" value="526" />
+				<m:style name="top" value="174" />
+				<m:style name="width" value="60" />
+				<m:style name="height" value="60" />
+			</m:styles>
+		</m:model>
+		<m:endpoints>
+			<m:endpoint
+				descriptionKey="570D30FE-67AB-42FB-B30B-6DD50E46E7C7"
+				inputTypeKey="1102D5B3-BA91-4DC7-B2FF-5D6E9D0FF86D" nodePath="/FILE"
+				outputTypeKey="F0BF1C72-AA1B-406E-B663-7ED1A9AC970C" processType="T"
+				targetServiceName="File ReadService" typeKey="undefined">
+				<m:properties>
+					<m:property display="Target Directory" encoding="Plain"
+						location="/service/port/address/@targetDirectory"
+						name="targetDirectory" required="true" />
+					<m:property display="File Name" encoding="Plain"
+						location="/service/port/address/@fileName" name="fileName"
+						required="true" />
+					<m:property display="Mode" encoding="Plain"
+						location="/service/port/address/@mode" name="mode" required="true" />
+					<m:property display="Content-Type" encoding="Plain"
+						location="/service/port/address/@contentType" name="contentType"
+						required="true" />
+					<m:property display="Compress" encoding="Plain"
+						location="/service/port/address/@compress" name="Compress"
+						required="true" />
+					<m:property display="Post Action" encoding="Plain"
+						location="/service/port/address/@postAction" name="postAction"
+						required="true" />
+					<m:property display="Post Action After Session Commit"
+						encoding="Plain"
+						location="/service/port/address/@postactionAfterSessionCommit"
+						name="postactionAfterSessionCommit" required="true" />
+					<m:property display="Move Directory" encoding="Plain"
+						location="/service/port/address/@moveDirectory"
+						name="moveDirectory" required="true" />
+					<m:property display="Attach Path" encoding="Plain"
+						location="/service/port/address/@attachPath" name="attachPath"
+						required="true" />
+					<m:property display="Working" encoding="Plain"
+						location="/service/port/address/@working" name="working"
+						required="true" />
+					<m:property display="CharSet" encoding="Plain"
+						location="/service/port/address/@charset" name="charset"
+						required="true" />
+					<m:property display="RetryOnFault" encoding="Plain"
+						location="/service/port/address/@retryonfault" name="retryonfault"
+						required="true" />
+					<m:property display="AllowFileCheck" encoding="Plain"
+						location="/service/port/address/@allowFileCheck"
+						name="allowFileCheck" required="true" />
+					<m:property display="Event Log Mode" encoding="Plain"
+						location="/service/port/address/@eventLogMode" name="eventLogMode"
+						required="true" />
+				</m:properties>
+			</m:endpoint>
+		</m:endpoints>
+	</m:node>
+	<m:node is2PhaseCommit="No" name="listfiles"
+		outputVariable="listFiles"
+		path="com.megatus.megaengine.console.mediate.view.task.Invoke"
+		sid="1C1784C3-7750-4A62-B0B5-7470F7EAA4BD">
+		<m:model path="com.megatus.megaengine.tool.model.Node">
+			<m:styles>
+				<m:style name="left" value="271" />
+				<m:style name="top" value="177" />
+				<m:style name="width" value="60" />
+				<m:style name="height" value="60" />
+			</m:styles>
+		</m:model>
+		<m:endpoints>
+			<m:endpoint
+				descriptionKey="4A55195A-7740-4029-B529-01D7ECEA397F"
+				nodePath="/FILE"
+				outputTypeKey="1102D5B3-BA91-4DC7-B2FF-5D6E9D0FF86D" processType="T"
+				targetServiceName="Invoke6Service" typeKey="undefined">
+				<m:properties>
+					<m:property display="Target Directory" encoding="Plain"
+						location="/service/port/address/@targetDirectory"
+						name="targetDirectory" required="true" />
+					<m:property display="File Name" encoding="Plain"
+						location="/service/port/address/@fileName" name="fileName"
+						required="true" />
+					<m:property display="List Option" encoding="Plain"
+						location="/service/port/address/@listOption" name="listOption"
+						required="true" />
+				</m:properties>
+			</m:endpoint>
+		</m:endpoints>
+	</m:node>
+	<m:node name="Split7"
+		path="com.megatus.megaengine.console.mediate.view.multiple.Split"
+		sid="08360310-1B43-4966-B657-2BD81C168D4B" sourceVariable="listFiles"
+		targetVariable="list">
+		<m:model path="com.megatus.megaengine.tool.model.Node">
+			<m:styles>
+				<m:style name="left" value="397" />
+				<m:style name="top" value="172" />
+				<m:style name="width" value="70" />
+				<m:style name="height" value="70" />
+			</m:styles>
+		</m:model>
+		<m:query>/listFiles/list</m:query>
+	</m:node>
+	<m:node mergeSourceSid="08360310-1B43-4966-B657-2BD81C168D4B"
+		name="Merge8"
+		path="com.megatus.megaengine.console.mediate.view.gateway.Merge"
+		sid="9377FBB3-2B1D-462A-9AFE-938815CDB34B">
+		<m:model path="com.megatus.megaengine.tool.model.Node">
+			<m:styles>
+				<m:style name="left" value="681" />
+				<m:style name="top" value="290" />
+				<m:style name="width" value="70" />
+				<m:style name="height" value="70" />
+			</m:styles>
+		</m:model>
+	</m:node>
+	<m:node inputVariable="MwAttachFile" is2PhaseCommit="No"
+		name="Send"
+		path="com.megatus.megaengine.console.mediate.view.task.Invoke"
+		sid="AAAA5C86-3B23-411D-8BD1-B63D4920FB28">
+		<m:model path="com.megatus.megaengine.tool.model.Node">
+			<m:styles>
+				<m:style name="left" value="529" />
+				<m:style name="top" value="293" />				
+			</m:styles>
+		</m:model>
+		<m:endpoints>
+			<m:endpoint
+				descriptionKey="4F6EDDFE-1CC3-44F8-98C7-0F8AB92FFB93"
+				inputTypeKey="F0BF1C72-AA1B-406E-B663-7ED1A9AC970C" nodePath="/SOAP"
+				processType="T" targetServiceName="HR_RECV_V1Service"
+				typeKey="A1A3B6CC-9614-4930-8224-99046F802D3C">
+				<m:properties>
+					<m:property display="Address" encoding="Plain"
+						location="/service/port/address/@location" name="address"
+						required="true" />
+					<m:property display="Transport" encoding="Plain"
+						location="/binding/binding/@transport" name="transport"
+						required="true" />
+					<m:property display="Binding Style" encoding="Plain"
+						location="/binding/binding/@style" name="style" required="true" />
+					<m:property display="SOAP Action" encoding="Plain"
+						location="/binding/operation/operation/@soapAction"
+						name="soapAction" required="true" />
+					<m:property display="Http Version" encoding="Plain"
+						location="/service/port/address/@httpVersion" name="httpVersion"
+						required="true" />
+					<m:property display="PublicKey ID" encoding="Plain"
+						location="/service/port/address/@publicKeyId" name="publicKeyId"
+						required="false" />					
+				</m:properties>
+			</m:endpoint>
+		</m:endpoints>
+	</m:node>
+	<m:node cronValue="0 40 3 * * ?" fireMode="GeneralFire"
+		name="Timer7"
+		path="com.megatus.megaengine.console.mediate.view.event.Timer"
+		sid="04177D9E-376B-4DE3-A1FC-62AED0CD9BB1" timerType="Cron">
+		<m:model path="com.megatus.megaengine.tool.model.Node">
+			<m:styles>
+				<m:style name="left" value="154" />
+				<m:style name="top" value="175" />
+				<m:style name="width" value="60" />
+				<m:style name="height" value="60" />
+			</m:styles>
+		</m:model>
+	</m:node>
+	<m:connector
+		path="com.megatus.megaengine.console.mediate.view.flow.Flow"
+		sid="758C87F5-763D-40B7-8459-5AA46F6FD325">
+		<m:model path="com.megatus.megaengine.tool.model.Connector">
+			<m:styles>
+				<m:style name="left" value="296" />
+				<m:style name="top" value="183" />
+				<m:style name="width" value="141" />
+				<m:style name="height" value="35" />
+			</m:styles>
+		</m:model>
+		<m:source ref="1C1784C3-7750-4A62-B0B5-7470F7EAA4BD" />
+		<m:target ref="08360310-1B43-4966-B657-2BD81C168D4B" />
+	</m:connector>
+	<m:connector
+		path="com.megatus.megaengine.console.mediate.view.flow.Flow"
+		sid="7BF38E0B-833B-4EBF-92C9-4F52162CA6E2">
+		<m:model path="com.megatus.megaengine.tool.model.Connector">
+			<m:styles>
+				<m:style name="left" value="427" />
+				<m:style name="top" value="180" />
+				<m:style name="width" value="134" />
+				<m:style name="height" value="35" />
+			</m:styles>
+		</m:model>
+		<m:source ref="08360310-1B43-4966-B657-2BD81C168D4B" />
+		<m:target ref="A611E9DB-6CAD-41AC-99F0-481F78CEEB05" />
+	</m:connector>
+	<m:connector
+		path="com.megatus.megaengine.console.mediate.view.flow.Flow"
+		sid="F336EDB1-A937-4D32-BC4B-BA43134C9DBA">
+		<m:model path="com.megatus.megaengine.tool.model.Connector">
+			<m:styles>
+				<m:style name="left" value="551" />
+				<m:style name="top" value="199" />
+				<m:style name="width" value="16" />
+				<m:style name="height" value="129" />
+			</m:styles>
+		</m:model>
+		<m:source ref="A611E9DB-6CAD-41AC-99F0-481F78CEEB05" />
+		<m:target ref="AAAA5C86-3B23-411D-8BD1-B63D4920FB28" />
+	</m:connector>
+	<m:connector
+		path="com.megatus.megaengine.console.mediate.view.flow.Flow"
+		sid="316B8AC1-E214-468C-833C-F8351ECD2621">
+		<m:model path="com.megatus.megaengine.tool.model.Connector">
+			<m:styles>
+				<m:style name="left" value="554" />
+				<m:style name="top" value="299" />
+				<m:style name="width" value="167" />
+				<m:style name="height" value="35" />
+			</m:styles>
+		</m:model>
+		<m:source ref="AAAA5C86-3B23-411D-8BD1-B63D4920FB28" />
+		<m:target ref="9377FBB3-2B1D-462A-9AFE-938815CDB34B" />
+	</m:connector>
+	<m:connector
+		path="com.megatus.megaengine.console.mediate.view.flow.Flow"
+		sid="3C970C5A-AA68-4EFF-8AF2-D77509821BA2">
+		<m:model path="com.megatus.megaengine.tool.model.Connector">
+			<m:styles>
+				<m:style name="left" value="179" />
+				<m:style name="top" value="181" />
+				<m:style name="width" value="127" />
+				<m:style name="height" value="35" />
+			</m:styles>
+		</m:model>
+		<m:source ref="04177D9E-376B-4DE3-A1FC-62AED0CD9BB1" />
+		<m:target ref="1C1784C3-7750-4A62-B0B5-7470F7EAA4BD" />
+	</m:connector>
+	<m:descriptions>
+		<m:description
+			descriptionKey="570D30FE-67AB-42FB-B30B-6DD50E46E7C7">
+			<wsdl:definitions
+				xmlns:ejb="http://schemas.xmlsoap.org/wsdl/ejb/"
+				xmlns:file="http://schemas.xmlsoap.org/wsdl/file/"
+				xmlns:ftp="http://schemas.xmlsoap.org/wsdl/ftp/"
+				xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+				xmlns:java="http://schemas.xmlsoap.org/wsdl/java/"
+				xmlns:jdbc="http://schemas.xmlsoap.org/wsdl/jdbc/"
+				xmlns:jms="http://schemas.xmlsoap.org/wsdl/jms/"
+				xmlns:ldap="http://schemas.xmlsoap.org/wsdl/ldap/"
+				xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+				xmlns:s="http://www.w3.org/2001/XMLSchema"
+				xmlns:soap11="http://schemas.xmlsoap.org/wsdl/soap/"
+				xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+				xmlns:soapJms="http://www.w3.org/TR/soapjms/"
+				xmlns:tcp="http://schemas.megaengine.megatus.com/wsdl/tcp/"
+				xmlns:tcpFile="http://schemas.megaengine.megatus.com/wsdl/tcpFile/"
+				xmlns:tns="urn:megaware:file:read:A611E9DB-6CAD-41AC-99F0-481F78CEEB05"
+				xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+				targetNamespace="urn:megaware:file:read:A611E9DB-6CAD-41AC-99F0-481F78CEEB05">
+				<wsdl:types />
+				<wsdl:message name="input" />
+				<wsdl:message name="output" />
+				<wsdl:portType name="File ReadPortType">
+					<wsdl:operation name="READ">
+						<wsdl:input message="tns:input" />
+						<wsdl:output message="tns:output" />
+					</wsdl:operation>
+				</wsdl:portType>
+				<wsdl:binding name="File ReadBinding"
+					type="tns:File ReadPortType">
+					<file:binding />
+					<wsdl:operation name="READ">
+						<file:operation />
+						<wsdl:input>
+							<file:body use="literal" />
+						</wsdl:input>
+						<wsdl:output>
+							<file:body use="literal" />
+						</wsdl:output>
+					</wsdl:operation>
+				</wsdl:binding>
+				<wsdl:service name="File ReadService">
+					<wsdl:port binding="tns:File ReadBinding"
+						name="File ReadBindingPort">
+						<file:address allowFileCheck="false" attachPath=""
+							charset="EUC-KR" compress="None" contentType="Flat-File"
+							eventLogMode="Full" fileName="${input(/list/fileName)}"
+							location="" mode="Attachment" moveDirectory="" postAction="none"
+							postactionAfterSessionCommit="false" retryonfault="false"
+							targetDirectory="/u01/LGEFILE/HR/XXDIFH/INTF"
+							working="/home/megaware/E1000/files/working" />
+					</wsdl:port>
+				</wsdl:service>
+			</wsdl:definitions>
+		</m:description>
+		<m:description
+			descriptionKey="4F6EDDFE-1CC3-44F8-98C7-0F8AB92FFB93">
+			<wsdl:definitions
+				xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+				xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+				xmlns:mw="http://www.mobicware.com"
+				xmlns:s="http://www.w3.org/2001/XMLSchema"
+				xmlns:soap11="http://schemas.xmlsoap.org/wsdl/soap/"
+				xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+				xmlns:tcp="http://schemas.megaengine.megatus.com/wsdl/tcp/"
+				xmlns:tcpFile="http://schemas.megaengine.megatus.com/wsdl/tcpFile/"
+				xmlns:tns="urn:megaware:/mediate/LG/RECV/HR_RECV_V1/HR_RECV_V1.wsdl"
+				xmlns:wsa="http://www.w3.org/2005/08/addressing"
+				xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+				targetNamespace="urn:megaware:/mediate/LG/RECV/HR_RECV_V1/HR_RECV_V1.wsdl">
+				<wsdl:types>
+					<s:schema elementFormDefault="unqualified"
+						targetNamespace="urn:megaware:/mediate/LG/RECV/HR_RECV_V1/HR_RECV_V1.wsdl">
+						<s:import namespace="urn:HR_RECV_V1Service"
+							schemaLocation="A1A3B6CC-9614-4930-8224-99046F802D3C" />
+					</s:schema>
+				</wsdl:types>
+				<wsdl:message name="input">
+					<wsdl:part element="tns:MwAttachFile" name="parameters" />
+				</wsdl:message>
+				<wsdl:message name="output" />
+				<wsdl:portType name="HR_RECV_V1PortType">
+					<wsdl:operation name="receive">
+						<wsdl:input message="tns:input" />
+						<wsdl:output message="tns:output" />
+					</wsdl:operation>
+				</wsdl:portType>
+				<wsdl:binding name="HR_RECV_V1SOAP12Binding"
+					type="tns:HR_RECV_V1PortType">
+					<soap12:binding style="Document"
+						transport="http://schemas.xmlsoap.org/soap/http" />
+					<wsdl:operation name="receive">
+						<soap12:operation
+							soapAction="/mediate/LG/RECV/HR_RECV_V1" />
+						<wsdl:input>
+							<soap12:body use="literal" />
+						</wsdl:input>
+						<wsdl:output>
+							<soap12:body use="literal" />
+						</wsdl:output>
+					</wsdl:operation>
+				</wsdl:binding>
+				<wsdl:service name="HR_RECV_V1Service">
+					<wsdl:port binding="tns:HR_RECV_V1SOAP12Binding"
+						name="HR_RECV_V1SOAP12BindingPort">
+						<soap12:address algorithm="AES_128"
+							eventLogMode="Full" httpVersion="1.1" isNotSuppressFault="yes"
+							isNotSuppressStatus="no"
+							location="http://165.243.64.33:57720/mediate/LG/RECV/HR_RECV_V1"
+							publicKeyId="" />
+					</wsdl:port>
+				</wsdl:service>
+			</wsdl:definitions>
+		</m:description>
+		<m:description
+			descriptionKey="4A55195A-7740-4029-B529-01D7ECEA397F">
+			<wsdl:definitions
+				xmlns:ejb="http://schemas.xmlsoap.org/wsdl/ejb/"
+				xmlns:file="http://schemas.xmlsoap.org/wsdl/file/"
+				xmlns:ftp="http://schemas.xmlsoap.org/wsdl/ftp/"
+				xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+				xmlns:java="http://schemas.xmlsoap.org/wsdl/java/"
+				xmlns:jdbc="http://schemas.xmlsoap.org/wsdl/jdbc/"
+				xmlns:jms="http://schemas.xmlsoap.org/wsdl/jms/"
+				xmlns:ldap="http://schemas.xmlsoap.org/wsdl/ldap/"
+				xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+				xmlns:s="http://www.w3.org/2001/XMLSchema"
+				xmlns:soap11="http://schemas.xmlsoap.org/wsdl/soap/"
+				xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+				xmlns:soapJms="http://www.w3.org/TR/soapjms/"
+				xmlns:tcp="http://schemas.megaengine.megatus.com/wsdl/tcp/"
+				xmlns:tcpFile="http://schemas.megaengine.megatus.com/wsdl/tcpFile/"
+				xmlns:tns="urn:megaware:file:listfiles:1C1784C3-7750-4A62-B0B5-7470F7EAA4BD"
+				xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+				targetNamespace="urn:megaware:file:listfiles:1C1784C3-7750-4A62-B0B5-7470F7EAA4BD">
+				<wsdl:types />
+				<wsdl:message name="input" />
+				<wsdl:message name="output" />
+				<wsdl:portType name="Invoke6PortType">
+					<wsdl:operation name="LISTFILES">
+						<wsdl:input message="tns:input" />
+						<wsdl:output message="tns:output" />
+					</wsdl:operation>
+				</wsdl:portType>
+				<wsdl:binding name="Invoke6Binding"
+					type="tns:Invoke6PortType">
+					<file:binding />
+					<wsdl:operation name="LISTFILES">
+						<file:operation />
+						<wsdl:input>
+							<file:body use="literal" />
+						</wsdl:input>
+						<wsdl:output>
+							<file:body use="literal" />
+						</wsdl:output>
+					</wsdl:operation>
+				</wsdl:binding>
+				<wsdl:service name="Invoke6Service">
+					<wsdl:port binding="tns:Invoke6Binding"
+						name="Invoke6BindingPort">
+						<file:address fileName=".*.*" listOption="Only_File"
+							location="" targetDirectory="/u01/LGEFILE/HR/XXDIFH/INTF" />
+					</wsdl:port>
+				</wsdl:service>
+			</wsdl:definitions>
+		</m:description>
+	</m:descriptions>
+	<m:types>
+		<m:type typeKey="EDEE9BBC-2C1D-46CF-9935-439AF4FEE263">
+			<s:schema xmlns:mw="http://www.mobicware.com"
+				xmlns:s="http://www.w3.org/2001/XMLSchema" name="APPT_V1">
+				<s:element mw:isEncrypt="no"
+					mw:tableName="TBIF_V1_HRM_APPT" name="TBIF_V1_HRM_APPT">
+					<s:complexType>
+						<s:sequence>
+							<s:element maxOccurs="unbounded" minOccurs="0"
+								mw:column="" mw:delimiter="/n" mw:encoding="Plain"
+								mw:isCondition="no" mw:isEncrypt="no" mw:preamble=""
+								mw:tableName="" name="item">
+								<s:complexType>
+									<s:sequence>
+										<s:element default="CNS" maxOccurs="1" minOccurs="1"
+											mw:column="INSERT_ID" mw:delimiter="" mw:encoding="Plain"
+											mw:function="" mw:isCondition="no" mw:isEncrypt="no"
+											mw:length="0" mw:preamble="" name="INSERT_ID" type="s:string" />
+										<s:element maxOccurs="1" minOccurs="1"
+											mw:column="INSERT_DATE" mw:dbFunction="getdate()"
+											mw:delimiter="" mw:encoding="Plain" mw:function=""
+											mw:isCondition="no" mw:isEncrypt="no" mw:length="0"
+											mw:preamble="" name="INSERT_DATE" type="s:string" />
+										<s:element maxOccurs="1" minOccurs="1"
+											mw:column="COMP_CODE" mw:delimiter="@^@" mw:encoding="Plain"
+											mw:function="" mw:isCondition="yes" mw:isEncrypt="no"
+											mw:length="0" mw:preamble="" name="COMP_CODE" type="s:string" />
+										<s:element maxOccurs="1" minOccurs="1"
+											mw:column="EMPL_NUMB" mw:delimiter="@^@" mw:encoding="Plain"
+											mw:function="" mw:isCondition="no" mw:isEncrypt="no"
+											mw:length="0" mw:preamble="" name="EMPL_NUMB" type="s:string" />
+										<s:element maxOccurs="1" minOccurs="1"
+											mw:column="APPT_DATE" mw:delimiter="@^@" mw:encoding="Plain"
+											mw:function="" mw:isCondition="no" mw:isEncrypt="no"
+											mw:length="0" mw:preamble="" name="APPT_DATE" type="s:string" />
+										<s:element maxOccurs="1" minOccurs="1"
+											mw:column="APPT_TYPE_REF" mw:delimiter="@^@"
+											mw:encoding="Plain" mw:function="" mw:isCondition="no"
+											mw:isEncrypt="no" mw:length="0" mw:preamble=""
+											name="APPT_TYPE_REF" type="s:string" />
+										<s:element maxOccurs="1" minOccurs="1"
+											mw:column="APPT_TYPE_NAME" mw:delimiter="@^@"
+											mw:encoding="Plain" mw:function="" mw:isCondition="no"
+											mw:isEncrypt="no" mw:length="0" mw:preamble=""
+											name="APPT_TYPE_NAME" type="s:string" />
+										<s:element maxOccurs="1" minOccurs="1"
+											mw:column="POS_CODE_REF" mw:delimiter="@^@"
+											mw:encoding="Plain" mw:function="" mw:isCondition="no"
+											mw:isEncrypt="no" mw:length="0" mw:preamble=""
+											name="POS_CODE_REF" type="s:string" />
+										<s:element maxOccurs="1" minOccurs="1"
+											mw:column="POS_NAME" mw:delimiter="@^@" mw:encoding="Plain"
+											mw:function="" mw:isCondition="no" mw:isEncrypt="no"
+											mw:length="0" mw:preamble="" name="POS_NAME" type="s:string" />
+										<s:element maxOccurs="1" minOccurs="1"
+											mw:column="DUTY_NAME" mw:delimiter="@^@" mw:encoding="Plain"
+											mw:function="" mw:isCondition="no" mw:isEncrypt="no"
+											mw:length="0" mw:preamble="" name="DUTY_NAME" type="s:string" />
+										<s:element maxOccurs="1" minOccurs="1"
+											mw:column="CLASS_CODE_REF" mw:delimiter="@^@"
+											mw:encoding="Plain" mw:function="" mw:isCondition="no"
+											mw:isEncrypt="no" mw:length="0" mw:preamble=""
+											name="CLASS_CODE_REF" type="s:string" />
+										<s:element maxOccurs="1" minOccurs="1"
+											mw:column="CLASS_NAME" mw:delimiter="@^@" mw:encoding="Plain"
+											mw:function="" mw:isCondition="no" mw:isEncrypt="no"
+											mw:length="0" mw:preamble="" name="CLASS_NAME"
+											type="s:string" />
+										<s:element maxOccurs="1" minOccurs="1"
+											mw:column="APPT_COMP_CODE_REF" mw:delimiter="@^@"
+											mw:encoding="Plain" mw:function="" mw:isCondition="no"
+											mw:isEncrypt="no" mw:length="0" mw:preamble=""
+											name="APPT_COMP_CODE_REF" type="s:string" />
+										<s:element maxOccurs="1" minOccurs="1"
+											mw:column="APPT_COMP_NAME" mw:delimiter="@^@"
+											mw:encoding="Plain" mw:function="" mw:isCondition="no"
+											mw:isEncrypt="no" mw:length="0" mw:preamble=""
+											name="APPT_COMP_NAME" type="s:string" />
+										<s:element maxOccurs="1" minOccurs="1"
+											mw:column="APPT_DEPT_NAME" mw:delimiter="@^@"
+											mw:encoding="Plain" mw:function="" mw:isCondition="no"
+											mw:isEncrypt="no" mw:length="0" mw:preamble=""
+											name="APPT_DEPT_NAME" type="s:string" />
+										<s:element maxOccurs="1" minOccurs="1"
+											mw:column="JOB_CODE_REF" mw:delimiter="@^@"
+											mw:encoding="Plain" mw:function="" mw:isCondition="no"
+											mw:isEncrypt="no" mw:length="0" mw:preamble=""
+											name="JOB_CODE_REF" type="s:string" />
+										<s:element maxOccurs="1" minOccurs="1"
+											mw:column="JOB_NAME" mw:delimiter="@^@" mw:encoding="Plain"
+											mw:function="" mw:isCondition="no" mw:isEncrypt="no"
+											mw:length="0" mw:preamble="" name="JOB_NAME" type="s:string" />
+										<s:element maxOccurs="1" minOccurs="1"
+											mw:column="RESON_DESC" mw:delimiter="" mw:encoding="Plain"
+											mw:function="" mw:isCondition="no" mw:isEncrypt="no"
+											mw:length="0" mw:preamble="" name="RESON_DESC"
+											type="s:string" />
+									</s:sequence>
+								</s:complexType>
+							</s:element>
+						</s:sequence>
+					</s:complexType>
+				</s:element>
+			</s:schema>
+		</m:type>
+		<m:type typeKey="B855EE70-5F1D-4A7D-8E7B-B731F6272C61">
+			<s:schema xmlns:mw="http://www.mobicware.com"
+				xmlns:s="http://www.w3.org/2001/XMLSchema" name="e">
+				<s:element mw:isEncrypt="no" name="element1">
+					<s:complexType>
+						<s:sequence>
+							<s:element maxOccurs="1" minOccurs="1" mw:column=""
+								mw:delimiter="" mw:encoding="Plain" mw:function=""
+								mw:isCondition="no" mw:isEncrypt="no" mw:length="0"
+								mw:preamble="" name="element1" type="s:string" />
+						</s:sequence>
+					</s:complexType>
+				</s:element>
+			</s:schema>
+		</m:type>
+		<m:type typeKey="EFC81DB3-03BC-4775-BCD2-FE36B7EDCB4C">
+			<s:schema xmlns:mw="http://www.mobicware.com"
+				xmlns:s="http://www.w3.org/2001/XMLSchema" name="COMP_CODE">
+				<s:element mw:isEncrypt="no"
+					mw:tableName="TBIF_V1_HRM_APPT" name="table">
+					<s:complexType>
+						<s:sequence>
+							<s:element maxOccurs="1" minOccurs="0" mw:column=""
+								mw:delimiter="" mw:encoding="Plain" mw:isCondition="no"
+								mw:isEncrypt="no" mw:preamble="" mw:tableName="" name="item">
+								<s:complexType>
+									<s:sequence>
+										<s:element maxOccurs="1" minOccurs="1"
+											mw:column="COMP_CODE" mw:delimiter="" mw:encoding="Plain"
+											mw:function="" mw:isCondition="yes" mw:isEncrypt="no"
+											mw:length="0" mw:preamble="" name="COMP_CODE" type="s:string" />
+									</s:sequence>
+								</s:complexType>
+							</s:element>
+						</s:sequence>
+					</s:complexType>
+				</s:element>
+			</s:schema>
+		</m:type>
+		<m:type typeKey="C1C24E04-FA41-4139-AF4C-BF8A5D9A2889">
+			<s:schema xmlns:mw="http://www.mobicware.com"
+				xmlns:s="http://www.w3.org/2001/XMLSchema" name="result">
+				<s:element mw:isEncrypt="no" name="result">
+					<s:complexType>
+						<s:sequence>
+							<s:element maxOccurs="1" minOccurs="1" mw:column=""
+								mw:delimiter="" mw:encoding="Plain" mw:function=""
+								mw:isCondition="no" mw:isEncrypt="no" mw:length="0"
+								mw:preamble="" name="operation" type="s:string" />
+							<s:element maxOccurs="1" minOccurs="1" mw:column=""
+								mw:delimiter="" mw:encoding="Plain" mw:function=""
+								mw:isCondition="no" mw:isEncrypt="no" mw:length="0"
+								mw:preamble="" name="success" type="s:string" />
+						</s:sequence>
+					</s:complexType>
+				</s:element>
+			</s:schema>
+		</m:type>
+		<m:type typeKey="1102D5B3-BA91-4DC7-B2FF-5D6E9D0FF86D">
+			<s:schema xmlns:mw="http://www.mobicware.com"
+				xmlns:s="http://www.w3.org/2001/XMLSchema" name="listFiles">
+				<s:element mw:isEncrypt="no" name="listFiles">
+					<s:complexType>
+						<s:sequence>
+							<s:element maxOccurs="unbounded" minOccurs="0"
+								mw:column="" mw:delimiter="" mw:encoding="Plain"
+								mw:isCondition="no" mw:isEncrypt="no" mw:preamble=""
+								mw:tableName="" name="list">
+								<s:complexType>
+									<s:sequence>
+										<s:element maxOccurs="1" minOccurs="1" mw:column=""
+											mw:delimiter="" mw:encoding="Plain" mw:function=""
+											mw:isCondition="no" mw:isEncrypt="no" mw:length="0"
+											mw:preamble="" name="fileName" type="s:string" />
+										<s:element maxOccurs="1" minOccurs="1" mw:column=""
+											mw:delimiter="" mw:encoding="Plain" mw:function=""
+											mw:isCondition="no" mw:isEncrypt="no" mw:length="0"
+											mw:preamble="" name="filePath" type="s:string" />
+										<s:element maxOccurs="1" minOccurs="1" mw:column=""
+											mw:delimiter="" mw:encoding="Plain" mw:function=""
+											mw:isCondition="no" mw:isEncrypt="no" mw:length="0"
+											mw:preamble="" name="fileSize" type="s:string" />
+										<s:element maxOccurs="1" minOccurs="1" mw:column=""
+											mw:delimiter="" mw:encoding="Plain" mw:function=""
+											mw:isCondition="no" mw:isEncrypt="no" mw:length="0"
+											mw:preamble="" name="lastModified" type="s:string" />
+										<s:element maxOccurs="1" minOccurs="1" mw:column=""
+											mw:delimiter="" mw:encoding="Plain" mw:function=""
+											mw:isCondition="no" mw:isEncrypt="no" mw:length="0"
+											mw:preamble="" name="isFile" type="s:string" />
+									</s:sequence>
+								</s:complexType>
+							</s:element>
+						</s:sequence>
+					</s:complexType>
+				</s:element>
+				<s:element maxOccurs="unbounded" minOccurs="0"
+					mw:column="" mw:delimiter="" mw:encoding="Plain"
+					mw:isCondition="no" mw:isEncrypt="no" mw:preamble=""
+					mw:tableName="" name="list">
+					<s:complexType>
+						<s:sequence>
+							<s:element maxOccurs="1" minOccurs="1" mw:column=""
+								mw:delimiter="" mw:encoding="Plain" mw:function=""
+								mw:isCondition="no" mw:isEncrypt="no" mw:length="0"
+								mw:preamble="" name="fileName" type="s:string" />
+							<s:element maxOccurs="1" minOccurs="1" mw:column=""
+								mw:delimiter="" mw:encoding="Plain" mw:function=""
+								mw:isCondition="no" mw:isEncrypt="no" mw:length="0"
+								mw:preamble="" name="filePath" type="s:string" />
+							<s:element maxOccurs="1" minOccurs="1" mw:column=""
+								mw:delimiter="" mw:encoding="Plain" mw:function=""
+								mw:isCondition="no" mw:isEncrypt="no" mw:length="0"
+								mw:preamble="" name="fileSize" type="s:string" />
+							<s:element maxOccurs="1" minOccurs="1" mw:column=""
+								mw:delimiter="" mw:encoding="Plain" mw:function=""
+								mw:isCondition="no" mw:isEncrypt="no" mw:length="0"
+								mw:preamble="" name="lastModified" type="s:string" />
+							<s:element maxOccurs="1" minOccurs="1" mw:column=""
+								mw:delimiter="" mw:encoding="Plain" mw:function=""
+								mw:isCondition="no" mw:isEncrypt="no" mw:length="0"
+								mw:preamble="" name="isFile" type="s:string" />
+						</s:sequence>
+					</s:complexType>
+				</s:element>
+			</s:schema>
+		</m:type>
+		<m:type typeKey="F0BF1C72-AA1B-406E-B663-7ED1A9AC970C">
+			<s:schema xmlns:mw="http://www.mobicware.com"
+				xmlns:s="http://www.w3.org/2001/XMLSchema" name="msg">
+				<s:element mw:isEncrypt="no" name="MwAttachFile"
+					type="s:string" />
+			</s:schema>
+		</m:type>
+		<m:type name="HR_RECV_V1Service"
+			typeKey="A1A3B6CC-9614-4930-8224-99046F802D3C">
+			<s:schema xmlns:mw="http://www.mobicware.com"
+				xmlns:s="http://www.w3.org/2001/XMLSchema"
+				elementFormDefault="unqualified" name="HR_RECV_V1Service"
+				targetNamespace="urn:megaware:/mediate/LG/RECV/HR_RECV_V1/HR_RECV_V1.wsdl">
+				<s:element mw:isEncrypt="no" name="MwAttachFile"
+					type="s:string" />
+			</s:schema>
+		</m:type>
+	</m:types>
+	<m:variables>
+		<m:variable element="TBIF_V1_HRM_APPT"
+			name="TBIF_V1_HRM_APPT"
+			typeKey="EDEE9BBC-2C1D-46CF-9935-439AF4FEE263" />
+		<m:variable element="element1" name="element1"
+			typeKey="B855EE70-5F1D-4A7D-8E7B-B731F6272C61" />
+		<m:variable element="table" name="COMP_CODE"
+			typeKey="EFC81DB3-03BC-4775-BCD2-FE36B7EDCB4C" />
+		<m:variable element="result" name="result"
+			typeKey="C1C24E04-FA41-4139-AF4C-BF8A5D9A2889" />
+		<m:variable element="listFiles" name="listFiles"
+			typeKey="1102D5B3-BA91-4DC7-B2FF-5D6E9D0FF86D" />
+		<m:variable element="list" name="list"
+			typeKey="1102D5B3-BA91-4DC7-B2FF-5D6E9D0FF86D" />
+		<m:variable element="MwAttachFile" name="MwAttachFile"
+			typeKey="F0BF1C72-AA1B-406E-B663-7ED1A9AC970C" />
+	</m:variables>
+</m:diagram>
